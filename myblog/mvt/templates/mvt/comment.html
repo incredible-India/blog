@@ -1,0 +1,84 @@
+{% extends 'core/base.html' %}
+
+
+{% load static %}
+{% block title %}
+    Posts : Programming World 
+{% endblock title %}
+
+{% block content %}
+<nav class="navbar bg-info">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'homepage' %}">Programming World; <i class="fas fa-computer"></i> </a>
+    </div>
+  </nav>
+
+
+  <div class="container mt-2">
+
+    <div class="row">
+
+        <div class="col-sm-8">
+
+            {% for pts in pts  %}
+            
+            <h3 class="text-info">{{pts.title}}</h3>
+
+            <p class='text-secondary'><em>Published at {{pts.publish}} by {{pts.author}}</em></p>
+            <p class='text-secondary'><em>Updated at {{pts.updated }}</em></p>
+
+            <h4>
+                {{pts.body}}
+            </h4>
+
+            <a href="" class="text-info"><i class="fas fa-share"></i> Share post  </a>
+            {% endfor %}
+          
+
+        
+        <hr class="text-info">
+
+
+        <h3>
+            <i class="fas fa-comment"> </i> Comments
+        </h3>
+
+            <div class="alert alert-info" style="height:400px; overflow-y:scroll">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis commodi ea sequi, suscipit fugit incidunt ab quod perferendis eaque soluta perspiciatis laborum eligendi culpa cum quidem neque mollitia dolorum omnis!
+                Temporibus tenetur eaque error enim quasi maiores accusamus facilis necessitatibus aliquid saepe ab dolor molestiae in possimus illo sed similique esse ducimus odio dolorum, alias, debitis ad provident delectus? Ad!
+                Blanditiis ipsam deleniti voluptas soluta, nam amet ducimus voluptate impedit ex explicabo odit in libero quasi assumenda vero asperiores iure nobis incidunt quisquam error. Iste, itaque suscipit. Nam, tenetur odit?
+                Suscipit quis doloribus saepe voluptates iure libero officiis minus et. Eligendi velit officia modi tenetur id numquam nobis sequi doloremque, sed quas doloribus accusamus libero aliquid, autem, maxime a fuga.
+                Odit quis doloremque corrupti blanditiis aut rerum nostrum minus numquam inventore fugit. Tenetur nobis est iste obcaecati asperiores nulla porro consequuntur quaerat perspiciatis quisquam. Fuga quae eveniet dolor sit similique.
+                Fugit amet neque nulla sit beatae, sunt officiis harum molestias doloremque consequatur voluptatibus omnis placeat deleniti. Incidunt veritatis eveniet enim consequatur asperiores a soluta aspernatur, accusantium quaerat magnam, commodi eius.
+                Tempora perspiciatis est soluta nam similique, commodi labore accusamus at porro laborum dolor, suscipit reprehenderit ut earum eos quaerat magni fugiat consequatur accusantium sunt repudiandae. Quos eius culpa aut quam.
+                Corporis, corrupti? At beatae deserunt sed sequi, labore, dolore maxime accusantium expedita necessitatibus placeat consequatur quod officiis magni, optio rerum unde non iusto nobis aspernatur aut repellendus inventore nam. Quis!
+                Excepturi culpa neque odio ullam architecto omnis, quaerat optio, distinctio, inventore cum dolore voluptatum. Quos expedita quisquam facere officia necessitatibus molestias nobis nesciunt dolore doloremque nihil? Iste ad quis vero.
+                Natus, ab labore totam eaque omnis expedita perspiciatis dolorem eligendi praesentium iusto quod cupiditate error odit autem placeat iste illo necessitatibus. Quos sunt temporibus tenetur atque suscipit nulla beatae similique.
+            </div>
+        </div>
+
+     <div class="col-sm-4 alert alert-warning">
+
+        <form action="">
+            <fieldset>Write Your Comment</fieldset>
+            {% csrf_token %}
+
+            <input type="text" name="" id=""  class="form-control mt-2" placeholder="Name">
+            <input type="text" name="" id=""  class="form-control mt-2" placeholder="Email">
+            <textarea name="" id="" cols="30" rows="10" class="form-control mt-2" placeholder="Your Comment"></textarea>
+
+            <input type="submit" value="Submit" class="mt-2 btn btn-success">
+
+        </form>
+
+            <img src="{% static 'mvt/img/o.svg' %}" alt="" class="img-fluid mt-2">
+     </div>
+
+    </div>
+
+  </div>
+
+
+{% include 'core/bottom.html' %}
+
+{% endblock content %}

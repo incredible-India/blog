@@ -69,27 +69,34 @@ A programme should be recorded on a proper medium which the computer can process
 
             </div>
 
-            {% for pt in posts  %}
+           {% if posts %}
+           
+           {% for pt in posts  %}
             
 
-            <div class="conatiner mt-2">
+           <div class="conatiner mt-2">
 
-                <h3 class="text-info">{{pt.title}}</h3>
+               <h3 class="text-info">{{pt.title}}</h3>
 
-                <p class='text-secondary'><em>Published at {{pt.publish}} by {{pt.author}}</em></p>
-                <p class='text-secondary'><em>Updated at {{pt.updated }}</em></p>
+               <p class='text-secondary'><em>Published at {{pt.publish}} by {{pt.author}}</em></p>
+               <p class='text-secondary'><em>Updated at {{pt.updated }}</em></p>
 
-                <h4>
-                    {{pt.body}}
-                </h4>
+               <h4>
+                   {{pt.body}}
+               </h4>
 
-                <a href="" class="text-info"><i class="fas fa-share"></i> Share post  </a>
-                <a href="" class="text-info mx-3"><i class="fas fa-comment"></i> Commment  </a>
+               <a href="" class="text-info"><i class="fas fa-share"></i> Share post  </a>
+               <a href="{% url 'comments' pt.slug %}" class="text-info mx-3"><i class="fas fa-comment"></i> Commment  </a>
 
-            </div>
-            <hr class="text-info">
-            
-            {% endfor %}
+           </div>
+           <hr class="text-info">
+           
+           {% endfor %}
+{% else %}
+
+           <h1 class="text-center text-info">No Posts Yet</h1>
+
+           {% endif %}
 
           
             <hr>
