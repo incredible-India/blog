@@ -1,0 +1,117 @@
+{% extends 'core/base.html' %}
+
+
+{% load static %}
+{% block title %}
+    Posts : Programming World 
+{% endblock title %}
+
+
+
+{% block content %}
+
+
+{% comment %} nav bar   {% endcomment %}
+
+<nav class="navbar bg-info">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'homepage' %}">Programming World; <i class="fas fa-computer"></i> </a>
+    </div>
+  </nav>
+
+
+  <div class="container mt-2">
+    <div class="row">
+
+
+
+        <div class="col-sm-8">
+
+            <h2>All Posts <i class="fa-solid fa-signs-post"></i> </h2>
+            <hr class="text info">
+
+
+            {% for pt in posts  %}
+            
+
+            <div class="conatiner mt-2">
+
+                <h3 class="text-info">{{pt.title}}</h3>
+
+                <p class='text-secondary'><em>Published at {{pt.publish}} by {{pt.author}}</em></p>
+                <p class='text-secondary'><em>Updated at {{pt.updated }}</em></p>
+
+                <h4>
+                    {{pt.body}}
+                </h4>
+
+                <a href="" class="text-info"><i class="fas fa-share"></i> Share post  </a>
+                <a href="" class="text-info mx-3"><i class="fas fa-comment"></i> Commment  </a>
+
+            </div>
+            <hr class="text-info">
+            
+            {% endfor %}
+
+
+
+            {% comment %} pagination coding    {% endcomment %}
+
+
+            {% if page_obj %}
+
+            <div class="row">
+                <div class="col-sm-4"></div>
+            
+                <div class="col-sm-8">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                          <li class="page-item"><a class="page-link" href="?page={{page_obj.previous_page_number}}">Previous</a></li>
+                          {% endif %}
+                          <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+                       <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+                          <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+                          <li class="page-item"><a class="page-link" href="#">..</a></li>
+                          <li class="page-item"><a class="page-link" href="?page={{page_obj.paginator.num_pages}}">{{page_obj.paginator.num_pages}}</a></li>
+                          {% if page_obj.has_next %}
+                          <li class="page-item"><a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a></li>
+                          {% endif %}
+                        </ul>
+                      </nav>
+                </div>
+            </div>
+            
+            {% endif %}
+
+
+           <div class="container mt-2">
+
+            <p class="text-danger"> page {{page_obj.number}} of {{page_obj.paginator.num_pages}} </p>
+
+           </div>
+        </div>
+
+       
+        <div class="col-sm-4 " >
+
+            <div class="container alert alert-light">
+                <hr class="info">
+                <h6><a href="https://github.com/incredible-India?tab=repositories" target="_blank" class="text-info">All Projects <i class="fas fa-cog"></i></a></h6>
+                <hr class="info">
+                <h6><a href="{% url 'homepage' %}" class="text-info">Home <i class="fas fa-home"></i> </a></h6>
+                <hr class="info">
+
+            </div>
+
+            <img src="{% static 'mvt/img/g.svg' %}" alt="" class="img-fluid">
+        </div>
+    </div>
+  </div>
+
+
+  
+
+  {% include 'core/bottom.html' %}
+
+{% endblock content %}

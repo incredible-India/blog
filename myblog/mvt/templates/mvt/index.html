@@ -1,0 +1,139 @@
+{% extends 'core/base.html' %}
+
+
+{% load static %}
+{% block title %}
+    Programming World
+{% endblock title %}
+
+
+{% block content %}
+
+{% comment %} nav bar {% endcomment %}
+<!-- As a link -->
+<nav class="navbar bg-info">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'homepage' %}">Programming World; <i class="fas fa-computer"></i> </a>
+    </div>
+  </nav>
+  
+
+  <div class="mt-2 container" >
+    <div class="row">
+        <div class="col-sm-8 alert alert-light">
+            <h6>
+                <em>“Any fool can write code that a computer can understand. Good programmers write code that humans can understand.” – <b class="text-info">Martin Fowler</b></em>
+            </h6>
+            <h6 class="text-dark center">
+               <b> Programme</b> is a sequence of instructions written in a proper language through which the computer can understand and solve the problem given to it. It is the method by which the whole computing process is directed and controlled. Preparing a programme for the computer is known as “programming”.
+
+A programme should be recorded on a proper medium which the computer can process. Usually punched cards are used for this purpose. Each computer can understand one language which is known as “machine language”.
+            </h6>
+
+
+            <div class="container mt-3 bg-info pt-2 pb-2">
+
+                <h3 class="mt-2 ">Top Projects</h3>
+
+
+                
+
+            </div>
+
+            <div class="container mt-2 ">
+                <h5 class="mt-1 "><a href="https://github.com/incredible-India/MiniMarket" class='text-info'>Mini Market</a>   :- A Online Shopping Project</h5>
+                <hr class="text-info">
+                <h5 class="mt-1 "><a href="https://github.com/incredible-India/SpaceShip" class='text-info'>SpaceShip</a>   :- A spaceship project using C (glut library)</h5>
+                <hr class="text-info">
+                <h5 class="mt-1 "><a href="https://github.com/incredible-India/Stock-Market" class='text-info'>Stock Market</a>   :- A Project For Stock Market Prediction Using Machine Learning</h5>
+                <hr class="text-info">
+            </div>
+
+            <a href="https://github.com/incredible-India?tab=repositories" class="text-info" target="_blank">All Projects</a>
+
+
+            <div class="container mt-2">
+                <img src="{% static 'mvt/img/W.webp'%}" alt="" class="img-fluid">
+            </div>
+          
+
+
+
+
+            <div class="container mt-3 bg-info pt-2 pb-2">
+
+                <h3 class="mt-2 ">Top Post</h3>
+
+
+                
+
+            </div>
+
+            {% for pt in posts  %}
+            
+
+            <div class="conatiner mt-2">
+
+                <h3 class="text-info">{{pt.title}}</h3>
+
+                <p class='text-secondary'><em>Published at {{pt.publish}} by {{pt.author}}</em></p>
+                <p class='text-secondary'><em>Updated at {{pt.updated }}</em></p>
+
+                <h4>
+                    {{pt.body}}
+                </h4>
+
+                <a href="" class="text-info"><i class="fas fa-share"></i> Share post  </a>
+                <a href="" class="text-info mx-3"><i class="fas fa-comment"></i> Commment  </a>
+
+            </div>
+            <hr class="text-info">
+            
+            {% endfor %}
+
+          
+            <hr>
+            <a href="{% url 'myposts' %}" class="text-info mt-2">See All Post</a>
+
+
+
+
+        </div>
+        <div class="col-sm-4">
+            <h3 class="bg-info pt-2 pb-2 text-center"  >Programming World Blog</h3>
+
+            <div class="container alert alert-light">
+                <hr class="info">
+                <h6><a href="https://github.com/incredible-India?tab=repositories" target="_blank" class="text-info">All Projects <i class="fas fa-cog"></i></a></h6>
+                <hr class="info">
+                <h6><a href="{% url 'myposts' %}" class="text-info">All Posts <i class="fas fa-table"></i> </a></h6>
+                <hr class="info">
+
+            </div>
+
+            <div class="container">
+                <img src="{% static 'mvt/img/h.svg' %}" alt="" class="img-fluid">
+            </div>
+        
+
+            <div class="container alert alert-info">
+                <form action="" method="post">
+                    <legend>Contact us <i class="fas fa-phone"></i> </legend>
+                    {% csrf_token %}
+
+                    <input type="text" name="" id="" class="form-control mt-2" placeholder="Name">
+                    <input type="text" name="" id="" class="form-control mt-2" placeholder="email">
+                    <input type="submit" value="Submit" class=" mt-2 btn btn-success">
+
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+  </div>
+
+
+  {% include 'core/bottom.html' %}
+
+{% endblock content %}
