@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost','programming-world-blog.herokuapp.com']
 
-
+EMAIL_BACKEND	=	'django.core.mail.backends.console.EmailBackend'
 # Application definition
 
 INSTALLED_APPS = [

@@ -18,6 +18,23 @@
   </nav>
   
 
+
+  <div class="container mt-2">
+    {% if messages %}
+    {% for i  in messages %}  
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    
+        <strong> {{i}} </strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+       
+      </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+
   <div class="mt-2 container" >
     <div class="row">
         <div class="col-sm-8 alert alert-light">
@@ -81,11 +98,11 @@ A programme should be recorded on a proper medium which the computer can process
                <p class='text-secondary'><em>Published at {{pt.publish}} by {{pt.author}}</em></p>
                <p class='text-secondary'><em>Updated at {{pt.updated }}</em></p>
 
-               <h4>
+               <h6>
                    {{pt.body}}
-               </h4>
+               </h6>
 
-               <a href="" class="text-info"><i class="fas fa-share"></i> Share post  </a>
+               <a href="{% url 'share_post' pt.id %}" class="text-info"><i class="fas fa-share"></i> Share post  </a>
                <a href="{% url 'comments' pt.slug %}" class="text-info mx-3"><i class="fas fa-comment"></i> Commment  </a>
 
            </div>
@@ -128,8 +145,8 @@ A programme should be recorded on a proper medium which the computer can process
                     <legend>Contact us <i class="fas fa-phone"></i> </legend>
                     {% csrf_token %}
 
-                    <input type="text" name="" id="" class="form-control mt-2" placeholder="Name">
-                    <input type="text" name="" id="" class="form-control mt-2" placeholder="email">
+                    <input type="text" name="name" id="" class="form-control mt-2" placeholder="Name" required>
+                    <input type="text" name="email" id="" class="form-control mt-2" placeholder="email" required>
                     <input type="submit" value="Submit" class=" mt-2 btn btn-success">
 
 

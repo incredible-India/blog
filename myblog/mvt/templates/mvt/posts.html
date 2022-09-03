@@ -43,11 +43,11 @@
               <p class='text-secondary'><em>Published at {{pt.publish}} by {{pt.author}}</em></p>
               <p class='text-secondary'><em>Updated at {{pt.updated }}</em></p>
 
-              <h4>
+              <h6>
                   {{pt.body}}
-              </h4>
+              </h6>
 
-              <a href="" class="text-info"><i class="fas fa-share"></i> Share post  </a>
+              <a href="{% url 'share_post' pt.id %}" class="text-info"><i class="fas fa-share"></i> Share post  </a>
               <a href="{% url 'comments'  pt.slug %}" class="text-info mx-3"><i class="fas fa-comment"></i> Commment  </a>
 
           </div>
